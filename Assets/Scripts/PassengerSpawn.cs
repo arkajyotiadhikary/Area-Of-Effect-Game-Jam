@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class PassengerSpawn : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Time Managment
+    public float passengerSpawnDelay;
+    float time;
+
+    //
+    public GameObject passengerList;
+    public GameObject passengerDetail;
+
+
     void Start()
     {
-        
+        passengerSpawnDelay = Random.Range(2, 10);
     }
-
     // Update is called once per frame
     void Update()
     {
-        
+        if(time>=passengerSpawnDelay)
+        {
+            Spawn();
+            passengerSpawnDelay = Random.Range(10, 20);
+            time = 0;
+        }
+        else
+        {
+            time += Time.deltaTime;
+        }
+    }
+
+    void Spawn()
+    {
+        Instantiate(passengerDetail, passengerList.transform);
     }
 }
