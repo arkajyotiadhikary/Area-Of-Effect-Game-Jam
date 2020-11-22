@@ -15,6 +15,7 @@ public class StorePassangerData : MonoBehaviour,IDragHandler
     public int id;
     public string location;
     public int time;
+    public int money;
 
     public bool dataStored;
 
@@ -23,10 +24,11 @@ public class StorePassangerData : MonoBehaviour,IDragHandler
         transform.position = Input.mousePosition;
     }
 
-    public void Store(string _name,int _id,string _location,int _time)
+    public void Store(string _name,int _id,string _location,int _time,int _money)
     {
         if(!dataStored)
         {
+            money = _money;
             passangerName = _name;
             id = _id;
             location = _location;

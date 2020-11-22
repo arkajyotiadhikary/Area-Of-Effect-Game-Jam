@@ -63,7 +63,7 @@ public class PassengerDetails : MonoBehaviour
     
     public void store()
     {
-        passangerData.Store(passangerName, passengerID, passengerLocation, time);
+        passangerData.Store(passangerName, passengerID, passengerLocation, time,money);
         passangerData.dataStored = true;
     }
 }

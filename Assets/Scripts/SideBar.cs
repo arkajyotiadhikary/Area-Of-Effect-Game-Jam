@@ -10,6 +10,8 @@ public class SideBar : MonoBehaviour
 
     public GameObject[] PassengerSection;
 
+    public GameObject[] MoneySection;
+
     int btn = 1;
 
     public void driver()
@@ -21,10 +23,16 @@ public class SideBar : MonoBehaviour
     {
         btn = 2;
     }
+    public void moneyBTN()
+    {
+        btn = 3;
+    }
 
     private void Update()
     {
         PassengerSection = GameObject.FindGameObjectsWithTag("Passenger");
+        DriverSection = GameObject.FindGameObjectsWithTag("Driver");
+        MoneySection = GameObject.FindGameObjectsWithTag("Money");
 
         switch (btn)
         {
@@ -61,6 +69,22 @@ public class SideBar : MonoBehaviour
                             Pobj.GetComponent<Image>().enabled = false;
                         }
                     }
+                    
+                    foreach (GameObject Mobj in MoneySection)
+                    {
+                        if (Mobj.GetComponent<Text>() != null)
+                        {
+                            Mobj.GetComponent<Text>().enabled = false;
+                        }
+                        if (Mobj.GetComponent<InputField>() != null)
+                        {
+                            Mobj.GetComponent<InputField>().enabled = false;
+                        }
+                        if (Mobj.GetComponent<Image>() != null)
+                        {
+                            Mobj.GetComponent<Image>().enabled = false;
+                        }
+                    }
                     break;
                 }
             case 2:
@@ -94,6 +118,71 @@ public class SideBar : MonoBehaviour
                         if (_Pobj.GetComponent<Image>() != null)
                         {
                             _Pobj.GetComponent<Image>().enabled = true;
+                        }
+                    }
+                    foreach (GameObject Mobj in MoneySection)
+                    {
+                        if (Mobj.GetComponent<Text>() != null)
+                        {
+                            Mobj.GetComponent<Text>().enabled = false;
+                        }
+                        if (Mobj.GetComponent<InputField>() != null)
+                        {
+                            Mobj.GetComponent<InputField>().enabled = false;
+                        }
+                        if (Mobj.GetComponent<Image>() != null)
+                        {
+                            Mobj.GetComponent<Image>().enabled = false;
+                        }
+                    }
+                    break;
+                }
+            case 3:
+                {
+                    foreach (GameObject _Dobj in DriverSection)
+                    {
+                        if (_Dobj.GetComponent<Text>() != null)
+                        {
+                            _Dobj.GetComponent<Text>().enabled = false;
+                        }
+                        if (_Dobj.GetComponent<InputField>() != null)
+                        {
+                            _Dobj.GetComponent<InputField>().enabled = false;
+                        }
+                        if (_Dobj.GetComponent<Image>() != null)
+                        {
+                            _Dobj.GetComponent<Image>().enabled = false;
+                        }
+                    }
+
+                    foreach (GameObject _Pobj in PassengerSection)
+                    {
+                        if (_Pobj.GetComponent<Text>() != null)
+                        {
+                            _Pobj.GetComponent<Text>().enabled = false;
+                        }
+                        if (_Pobj.GetComponent<InputField>() != null)
+                        {
+                            _Pobj.GetComponent<InputField>().enabled = false;
+                        }
+                        if (_Pobj.GetComponent<Image>() != null)
+                        {
+                            _Pobj.GetComponent<Image>().enabled = false;
+                        }
+                    }
+                    foreach (GameObject Mobj in MoneySection)
+                    {
+                        if (Mobj.GetComponent<Text>() != null)
+                        {
+                            Mobj.GetComponent<Text>().enabled = true;
+                        }
+                        if (Mobj.GetComponent<InputField>() != null)
+                        {
+                            Mobj.GetComponent<InputField>().enabled = true;
+                        }
+                        if (Mobj.GetComponent<Image>() != null)
+                        {
+                            Mobj.GetComponent<Image>().enabled = true;
                         }
                     }
                     break;
