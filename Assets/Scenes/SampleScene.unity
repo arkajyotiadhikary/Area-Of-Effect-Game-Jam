@@ -3112,6 +3112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1620029871}
   - component: {fileID: 1620029872}
+  - component: {fileID: 1620029873}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3149,6 +3150,20 @@ MonoBehaviour:
   passengerList: {fileID: 1050125427}
   passengerDetail: {fileID: 4489911860999217263, guid: 7b15fc9dff1708c418e93c45107d0b83,
     type: 3}
+--- !u!114 &1620029873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620029870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa907614f8a9b2429ec2311d4ae8b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DriverSection: []
+  PassengerSection: []
 --- !u!1 &1630214388
 GameObject:
   m_ObjectHideFlags: 0
