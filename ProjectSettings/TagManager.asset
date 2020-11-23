@@ -9,6 +9,7 @@ TagManager:
   - Driver
   - GameManager
   - Money
+  - Reputation
   layers:
   - Default
   - TransparentFX

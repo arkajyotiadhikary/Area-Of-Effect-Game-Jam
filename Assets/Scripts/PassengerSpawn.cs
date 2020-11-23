@@ -15,7 +15,7 @@ public class PassengerSpawn : MonoBehaviour
 
     void Start()
     {
-        passengerSpawnDelay = Random.Range(2, 10);
+        passengerSpawnDelay = Random.Range(2, 5);
     }
     // Update is called once per frame
     void Update()
@@ -23,7 +23,7 @@ public class PassengerSpawn : MonoBehaviour
         if(time>=passengerSpawnDelay)
         {
             Spawn();
-            passengerSpawnDelay = Random.Range(10, 20);
+            passengerSpawnDelay = Random.Range(2, 10);
             time = 0;
         }
         else

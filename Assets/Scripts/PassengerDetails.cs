@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 public class PassengerDetails : MonoBehaviour
 {
+    Reputation repu;
+
     StorePassangerData passangerData;
 
     // UI s
@@ -31,6 +33,8 @@ public class PassengerDetails : MonoBehaviour
 
     private void Start()
     {
+        repu = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Reputation>();
+
         passangerData = GameObject.FindGameObjectWithTag("Notepad").GetComponent<StorePassangerData>();
 
         waitingTime = Random.Range(10, 20);
@@ -38,7 +42,7 @@ public class PassengerDetails : MonoBehaviour
         // randomize things
         passengerID = Random.Range(100, 10000);
         passengerLocation = locations[Random.Range(0, locations.Length)];
-        time = Random.Range(1, 11);
+        time = Random.Range(5, 20);
         passangerName = names[Random.Range(0, names.Length)];
         emergency = Random.Range(0, 11);
         money = Random.Range(10, 101);
@@ -57,13 +61,17 @@ public class PassengerDetails : MonoBehaviour
         }
         else
         {
+            if(emergency>7)
+            {
+                repu.reputation -= (emergency-7);
+            }
             Destroy(gameObject);
         }
     }
     
     public void store()
     {
-        passangerData.Store(passangerName, passengerID, passengerLocation, time,money);
+        passangerData.Store(passangerName, passengerID, passengerLocation, time,money,emergency);
         passangerData.dataStored = true;
     }
 }

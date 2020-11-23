@@ -3,6 +3,15 @@ using UnityEngine.UI;
 
 public class DriverDetails : MonoBehaviour
 {
+    Reputation repu;
+
+    public AudioSource source;
+    public AudioClip clip;
+
+    public Text timeLeftPlat;
+    public Text statusPlat;
+
+
     public GameObject busy;
     public GameObject[] disable;
 
@@ -29,6 +38,7 @@ public class DriverDetails : MonoBehaviour
 
     void Start()
     {
+        repu = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Reputation>();
         money = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MoneyCounter>();
         passangerData = GameObject.FindGameObjectWithTag("Notepad").GetComponent<StorePassangerData>();
         currentState = driverState.waiting;    
@@ -36,6 +46,10 @@ public class DriverDetails : MonoBehaviour
 
     void Update()
     {
+        timeLeftPlat.text = totalTime.ToString();
+        statusPlat.text = currentState.ToString();
+
+
         if(currentState == driverState.driving)
         {
             busy.SetActive(true);
@@ -69,17 +83,30 @@ public class DriverDetails : MonoBehaviour
     {
         if(currentState == driverState.waiting)
         {
-            if(passengerName.text == passangerData.passangerName && PassengerID.text == passangerData.id.ToString() && PassengerLocation.text == passangerData.location)
+            if(passangerData.passangerName != "" && passangerData.id.ToString() != "" && passangerData.location != "")
             {
-                money.money += passangerData.money;
-                passengerName.text = "";
-                PassengerID.text = "";
-                PassengerLocation.text = "";
-                
-                passangerData.dataStored = false;
-                currentState = driverState.driving;
-                totalTime = passangerData.time + driverSpeed;
-                time = 0;
+                if (passengerName.text == passangerData.passangerName && PassengerID.text == passangerData.id.ToString() && PassengerLocation.text == passangerData.location)
+                {
+                    if (passangerData.emergency > 5)
+                    {
+                        repu.reputation += 1;
+                    }
+
+                    source.PlayOneShot(clip);
+
+                    money.money += passangerData.money;
+                    passengerName.text = "";
+                    PassengerID.text = "";
+                    PassengerLocation.text = "";
+                    passangerData.passangerName = "";
+                    passangerData.id = 0;
+                    passangerData.location = "";
+
+                    passangerData.dataStored = false;
+                    currentState = driverState.driving;
+                    totalTime = passangerData.time + driverSpeed;
+                    time = 0;
+                }
             }
         }
     }
